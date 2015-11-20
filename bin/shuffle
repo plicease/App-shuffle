@@ -1,0 +1,42 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use 5.010;
+use List::Util qw( shuffle );
+
+if(@ARGV)
+{
+  say join " ", shuffle @ARGV;
+}
+else
+{
+  say for shuffle map { chomp; $_ } <STDIN>;
+}
+
+# PODNAME: shuffle
+# ABSTRACT: Shuffle command
+# VERSION
+
+=head1 SYNOPSIS
+
+ % shuffle <arguments>
+ % shuffle < text.txt
+
+=head1 DESCRIPTION
+
+The shuffle command shuffles the input it is given and outputs it.
+
+If provided with arguments it will randomly shuffle them and print them separated by spaces on one line.
+
+Otherwise it will read standard input, shuffle each line and print to standard output.
+
+=head1 OPTIONS
+
+NONE!
+
+=head1 CAVEATS
+
+When reading in a file, this program must load the entire content of the file in memory.  For big files that might be bad.
+
+=cut
